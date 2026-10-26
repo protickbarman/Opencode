@@ -1,0 +1,24 @@
+# Render Blueprint — OpenCode (full access: sessions + files)
+services:
+  - type: web
+    name: opencode
+    env: docker
+    # Connect your GitHub repo here when deploying:
+    # repo: https://github.com/YOUR_USERNAME/opencode-render
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: OPENCODE_PASSWORD
+        value: 12345
+      - key: PORT
+        value: 3000
+      - key: WORKSPACE
+        value: /workspace
+    # Optional: add a Render Disk to persist sessions/files across deploys
+    # disk:
+    #   name: opencode-data
+    #   mountPath: /workspace
+    #   sizeGB: 1
